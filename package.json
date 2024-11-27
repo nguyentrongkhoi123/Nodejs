@@ -1,10 +1,13 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src\\index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "beautiful": "lint-staged",
+    "start": "nodemon --inspect src\\index.js",
+    "watch": "sass --watch src/resources/sCss:src/public/css",
+    "test": "echo \"No test specified\" && exit 0",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -20,10 +23,31 @@
   },
   "homepage": "https://github.com/nguyentrongkhoi123/Nodejs#readme",
   "description": "",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
-    "express": "^4.21.0"
+    "bootstrap-icons": "^1.11.3",
+    "express": "^4.21.0",
+    "express-handlebars": "^8.0.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.6.3",
+    "mongoose-sequence": "^6.0.1",
+    "mongoose-slug-generator": "^1.0.4",
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.10",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "sass": "^1.78.0"
   }
 }
